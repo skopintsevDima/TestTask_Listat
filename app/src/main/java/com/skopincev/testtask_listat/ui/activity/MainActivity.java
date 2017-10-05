@@ -1,4 +1,4 @@
-package com.skopincev.testtask_listat.ui;
+package com.skopincev.testtask_listat.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
