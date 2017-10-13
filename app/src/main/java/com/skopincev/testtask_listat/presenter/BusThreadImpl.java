@@ -26,17 +26,18 @@ public class BusThreadImpl extends Thread implements BusThread {
             mBusState = BundleConst.STATE_CLOSED;
 
             Data data = new Data(number, threadId);
-            String isSended;
+            String isSent;
             do {
-                isSended = sendData(data);
-                Log.d(TAG, data.toString() + " sended: " + isSended);
+                isSent = sendData(data);
+                Log.d(TAG, "pullNumber: " + data.toString() + " sending: " + isSent);
                 try {
-                    if (isSended.equals(BundleConst.RESULT_FAIL))
+                    if (isSent.equals(BundleConst.RESULT_FAIL)) {
                         sleep(BundleConst.TIME_TO_WAIT);
+                    }
                 } catch (InterruptedException e) {
-                    Log.d(TAG, e.getMessage());
+                    Log.d(TAG, "pullNumber: " + e.getMessage());
                 }
-            } while (!isSended.equals(BundleConst.RESULT_SUCCESS));
+            } while (!isSent.equals(BundleConst.RESULT_SUCCESS));
 
             mBusState = BundleConst.STATE_OPENED;
             return BundleConst.RESULT_SUCCESS;

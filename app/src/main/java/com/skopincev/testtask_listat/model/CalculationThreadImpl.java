@@ -37,28 +37,34 @@ public class CalculationThreadImpl extends Thread implements CalculationThread {
         super.run();
         for (int num = mMin; num < mMax; num++){
             if (isPrime(num)){
-                String isSended;
+                String isSent;
                 do {
-                    isSended = sendNumber(num);
-                    Log.d(TAG, "Prime number " + num + " from Thread " + mThreadId + " sended: " + isSended);
+                    isSent = sendNumber(num);
+                    Log.d(TAG, "run: Prime number " + num + " from Thread " + mThreadId + " sending: " + isSent);
                     try {
-                        if (isSended.equals(BundleConst.RESULT_FAIL))
+                        if (isSent.equals(BundleConst.RESULT_FAIL)) {
                             sleep(BundleConst.TIME_TO_WAIT);
+                        }
                     } catch (InterruptedException e) {
-                        Log.d(TAG, e.getMessage());
+                        Log.d(TAG, "run: " + e.getMessage());
                     }
-                } while (!isSended.equals(BundleConst.RESULT_SUCCESS));
+                } while (!isSent.equals(BundleConst.RESULT_SUCCESS));
             }
         }
         mState = BundleConst.STATE_FINISHED;
     }
 
     private boolean isPrime(int num) {
+        Log.d(TAG, "isPrime: checking number " + num + " for primary started");
+
         //TODO: use faster algorithm
         for(long i = 2; i <= (int) Math.sqrt(num); i++) {
-            if (num % i == 0)
+            if (num % i == 0) {
+                Log.d(TAG, "isPrime: number " + num + " is not prime");
                 return false;
+            }
         }
+        Log.d(TAG, "isPrime: number " + num + " is prime");
         return true;
     }
 
@@ -66,16 +72,21 @@ public class CalculationThreadImpl extends Thread implements CalculationThread {
     public void startCalculating() {
         start();
         mState = BundleConst.STATE_STARTED;
+
+        Log.d(TAG, "startCalculating: thread " + mThreadId + " started calculating");
     }
 
     @Override
     public void stopCalculating() {
         stop();
+
+        Log.d(TAG, "stopCalculating: thread " + mThreadId + " stopped calculating");
+
     }
 
     @Override
     public String sendNumber(int number) {
-        String isSended = mBus.pullNumber(number, mThreadId);
-        return isSended;
+        String isSent = mBus.pullNumber(number, mThreadId);
+        return isSent;
     }
 }

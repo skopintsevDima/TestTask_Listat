@@ -4,11 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.skopincev.testtask_listat.R;
 import com.skopincev.testtask_listat.model.Data;
@@ -21,6 +19,8 @@ import java.util.ArrayList;
 
 public class CalculationActivity extends AppCompatActivity implements CalculationView {
 
+    private static final String TAG = CalculationActivity.class.getSimpleName();
+
     private RecyclerView mList;
     private ThreadListAdapter mListAdapter;
 
@@ -29,6 +29,7 @@ public class CalculationActivity extends AppCompatActivity implements Calculatio
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d(TAG, "onCreate");
         setContentView(R.layout.activity_calculation);
 
         mPresenter = new CalculationPresenterImpl();
@@ -38,6 +39,7 @@ public class CalculationActivity extends AppCompatActivity implements Calculatio
     }
 
     private void initList() {
+        Log.d(TAG, "initList: Recycler view initialized");
         mList = (RecyclerView) findViewById(R.id.rv_list);
         mListAdapter = new ThreadListAdapter(this, new ArrayList<Data>());
         mList.setLayoutManager(new LinearLayoutManager(this));
@@ -61,6 +63,7 @@ public class CalculationActivity extends AppCompatActivity implements Calculatio
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d(TAG, "onPause");
         if (mPresenter != null){
             mPresenter.pauseDisplaying();
         }
@@ -69,6 +72,7 @@ public class CalculationActivity extends AppCompatActivity implements Calculatio
     @Override
     protected void onResume() {
         super.onResume();
+        Log.d(TAG, "onResume");
         if (mPresenter != null){
             mPresenter.resumeDisplaying();
         }
@@ -77,6 +81,7 @@ public class CalculationActivity extends AppCompatActivity implements Calculatio
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.d(TAG, "onDestroy");
         if (mPresenter != null){
             mPresenter.finishCalculation();
             mPresenter.detach();

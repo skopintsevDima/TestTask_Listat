@@ -73,6 +73,7 @@ public class StoringThreadImpl extends Thread implements StoringThread {
     @Override
     public void stopPullingData() {
         if (isAlive()){
+            Log.d(TAG, "stopPullingData: Storing thread stopped");
             stop();
         }
     }

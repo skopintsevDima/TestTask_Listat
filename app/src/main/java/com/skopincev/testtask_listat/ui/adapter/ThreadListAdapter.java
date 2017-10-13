@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import java.util.Locale;
  */
 
 public class ThreadListAdapter extends RecyclerView.Adapter<ThreadListAdapter.ThreadItemHolder> {
+
+    private static final String TAG = ThreadListAdapter.class.getSimpleName();
 
     private interface VIEW_TYPE{
         int EVEN_TYPE = 1;
@@ -58,17 +61,21 @@ public class ThreadListAdapter extends RecyclerView.Adapter<ThreadListAdapter.Th
     private LayoutInflater mInflater;
 
     public ThreadListAdapter(Context context, List<Data> items){
+        Log.d(TAG, "ThreadListAdapter: Created");
+
         mInflater = LayoutInflater.from(context);
         mItems = items;
     }
 
     public void addItem(Data data){
         mItems.add(data);
+        Log.d(TAG, "addItem: Item " + data.toString() + "\n added to list");
         notifyItemInserted(mItems.size());
     }
 
     public void clear() {
         mItems.clear();
+        Log.d(TAG, "clear: List was been cleared");
         notifyDataSetChanged();
     }
 
