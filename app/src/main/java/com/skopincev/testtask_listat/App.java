@@ -6,7 +6,6 @@ import android.app.Application;
  * Created by skopi on 04.10.2017.
  */
 
-//TODO: comment code
 //TODO: catch all Exceptions
 //TODO: synchronize threads
 //TODO: create an app scheme!!!

@@ -6,6 +6,9 @@ import android.util.Log;
 
 import com.skopincev.testtask_listat.R;
 
+/**
+ * Screen for displaying info about app
+ */
 public class AboutActivity extends AppCompatActivity {
 
     private static final String TAG = AboutActivity.class.getSimpleName();

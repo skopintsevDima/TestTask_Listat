@@ -26,6 +26,9 @@ public class CalculationPresenterImpl implements CalculationPresenter {
 
     private static final String TAG = CalculationPresenterImpl.class.getSimpleName();
 
+    /**
+     * Holds data about {@link CalculationThread}
+     */
     private class ThreadData{
 
         public int id;
@@ -42,6 +45,10 @@ public class CalculationPresenterImpl implements CalculationPresenter {
     private List<CalculationThread> mCalculators;
 
     private CalculationView mCalculationView;
+
+    /**
+     * Components of presenter: Bus + Store
+     */
     private BusThread mBusThread;
     private StoringThread mStoringThread;
 
@@ -61,6 +68,10 @@ public class CalculationPresenterImpl implements CalculationPresenter {
         mCalculationView = null;
     }
 
+    /**
+     * Read XML file with threads descriptions and parse it to list of {@link ThreadData}
+     * @return list of ThreadData, that used for holding data about {@link CalculationThread}
+     */
     private List<ThreadData> readThreads() {
         List<ThreadData> threads = new ArrayList<>();
 
@@ -117,6 +128,9 @@ public class CalculationPresenterImpl implements CalculationPresenter {
         return threads;
     }
 
+    /**
+     * Change list of {@link ThreadData} to list of {@link CalculationThread} and starts them
+     */
     private void initCalculators() {
         List<ThreadData> threads = readThreads();
 
@@ -144,6 +158,10 @@ public class CalculationPresenterImpl implements CalculationPresenter {
         initCalculators();
     }
 
+    /**
+     *  Used for sending data to View
+     * @param data is data for displaying
+     */
     @Override
     public void displayData(Data data) {
         mCalculationView.displayData(data);

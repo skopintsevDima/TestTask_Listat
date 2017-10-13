@@ -1,10 +1,16 @@
 package com.skopincev.testtask_listat.model;
 
-import java.util.Date;
+import com.skopincev.testtask_listat.presenter.BusThread;
+import com.skopincev.testtask_listat.presenter.StoringThread;
+import com.skopincev.testtask_listat.view.CalculationView;
+
 import java.util.UUID;
 
 /**
  * Created by skopi on 04.10.2017.
+ * Hold data about prime number.
+ * Used for sending between {@link BusThread} and {@link StoringThread},
+ * and between {@link StoringThread} and {@link CalculationView}
  */
 
 public class Data {

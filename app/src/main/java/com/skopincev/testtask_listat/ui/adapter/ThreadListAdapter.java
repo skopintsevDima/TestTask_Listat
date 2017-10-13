@@ -1,8 +1,6 @@
 package com.skopincev.testtask_listat.ui.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,9 +10,7 @@ import android.widget.TextView;
 
 import com.skopincev.testtask_listat.R;
 import com.skopincev.testtask_listat.model.Data;
-import com.skopincev.testtask_listat.ui.activity.CalculationActivity;
 
-import org.w3c.dom.Text;
 
 import java.util.List;
 import java.util.Locale;
@@ -27,6 +23,9 @@ public class ThreadListAdapter extends RecyclerView.Adapter<ThreadListAdapter.Th
 
     private static final String TAG = ThreadListAdapter.class.getSimpleName();
 
+    /**
+     * Used for choose the right view type(odd or even)
+     */
     private interface VIEW_TYPE{
         int EVEN_TYPE = 1;
         int ODD_TYPE = 2;

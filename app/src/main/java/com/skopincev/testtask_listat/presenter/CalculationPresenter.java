@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * Created by skopi on 04.10.2017.
+ * Describe presenter's functionality
  */
 
 public interface CalculationPresenter {

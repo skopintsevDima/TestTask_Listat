@@ -9,6 +9,9 @@ import android.widget.Button;
 
 import com.skopincev.testtask_listat.R;
 
+/**
+ * Start screen of app
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();

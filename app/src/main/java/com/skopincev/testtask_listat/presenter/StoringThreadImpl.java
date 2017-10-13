@@ -17,6 +17,9 @@ public class StoringThreadImpl extends Thread implements StoringThread {
 
     private static final String TAG = StoringThreadImpl.class.getSimpleName();
 
+    /**
+     * Used for describing state of connection between View and Presenter
+     */
     private String mConnectionState = BundleConst.CONNECTION_CLOSED;
     private List<Data> mDataBank = new ArrayList<>();
     private CalculationPresenter mPresenter;
@@ -25,6 +28,9 @@ public class StoringThreadImpl extends Thread implements StoringThread {
         mPresenter = presenter;
     }
 
+    /**
+     * Sends all data that was been stored while connection was closed
+     */
     private void displayStoredData() {
         if (mDataBank.size() > 0) {
             Log.d(TAG, "displayStoredData: Start displaying");

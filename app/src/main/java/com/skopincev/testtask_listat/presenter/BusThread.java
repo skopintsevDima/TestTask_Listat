@@ -6,6 +6,7 @@ import java.util.Date;
 
 /**
  * Created by skopi on 04.10.2017.
+ * Describe BusThread's functionality
  */
 
 public interface BusThread {

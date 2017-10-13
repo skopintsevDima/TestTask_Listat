@@ -13,6 +13,9 @@ public class BusThreadImpl extends Thread implements BusThread {
 
     private static final String TAG = BusThreadImpl.class.getSimpleName();
 
+    /**
+     * Used for controlling access to Bus from another threads
+     */
     private int mBusState = BundleConst.STATE_CLOSED;
     private StoringThread mStoringThread;
 
@@ -27,6 +30,7 @@ public class BusThreadImpl extends Thread implements BusThread {
 
             Data data = new Data(number, threadId);
             String isSent;
+            //Try to send data to Store until was sent
             do {
                 isSent = sendData(data);
                 Log.d(TAG, "pullNumber: " + data.toString() + " sending: " + isSent);

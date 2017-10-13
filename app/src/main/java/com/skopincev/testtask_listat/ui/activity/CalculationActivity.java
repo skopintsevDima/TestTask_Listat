@@ -17,6 +17,9 @@ import com.skopincev.testtask_listat.view.CalculationView;
 
 import java.util.ArrayList;
 
+/**
+ * Main screen of app
+ */
 public class CalculationActivity extends AppCompatActivity implements CalculationView {
 
     private static final String TAG = CalculationActivity.class.getSimpleName();
