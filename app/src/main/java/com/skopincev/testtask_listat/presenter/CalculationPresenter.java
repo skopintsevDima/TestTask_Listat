@@ -13,6 +13,8 @@ public interface CalculationPresenter {
     void attach(CalculationView view);
     void detach();
 
+    void displayData(Data data);
+
     void startCalculation();
     void pauseDisplaying();
     void resumeDisplaying();

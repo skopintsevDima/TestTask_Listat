@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.skopincev.testtask_listat">
+          package="com.skopincev.testtask_listat">
 
     <application
         android:allowBackup="true"
@@ -10,14 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.activity.MainActivity">
-
-        </activity>
-        <activity android:name=".ui.activity.CalculationActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.activity.CalculationActivity"
+            android:label="Prime numbers">
+        </activity>
+        <activity
+            android:name=".ui.activity.AboutActivity"
+            android:label="About">
         </activity>
     </application>
 

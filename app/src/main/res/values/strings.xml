@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TestTask_Listat</string>
+    <string name="mi_start_calculation">Start calculation</string>
+    <string name="item_title">Thread number</string>
+    <string name="item_massage">prime number generated:</string>
+    <string name="btn_start_text">Start</string>
+    <string name="btn_about_text">About</string>
 </resources>

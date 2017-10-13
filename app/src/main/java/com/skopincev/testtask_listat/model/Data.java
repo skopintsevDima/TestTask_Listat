@@ -13,6 +13,14 @@ public class Data {
     private int mPrimeNumber;
     private int mCalculationThreadId;
 
+    public int getPrimeNumber() {
+        return mPrimeNumber;
+    }
+
+    public int getCalculationThreadId() {
+        return mCalculationThreadId;
+    }
+
     public Data(int primeNumber, int calculationThreadId){
         mId = UUID.randomUUID();
         mPrimeNumber = primeNumber;

@@ -69,6 +69,11 @@ public class CalculationThreadImpl extends Thread implements CalculationThread {
     }
 
     @Override
+    public void stopCalculating() {
+        stop();
+    }
+
+    @Override
     public String sendNumber(int number) {
         String isSended = mBus.pullNumber(number, mThreadId);
         return isSended;

@@ -41,4 +41,9 @@ public interface BundleConst {
      * How much wait for repeat in millis
      */
     int TIME_TO_WAIT = 100;
+
+    /**
+     * Name of XML file with threads descriptions
+     */
+    String THREADS_FILENAME = "threads.xml";
 }

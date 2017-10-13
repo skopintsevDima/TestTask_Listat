@@ -6,8 +6,12 @@ import android.app.Application;
  * Created by skopi on 04.10.2017.
  */
 
+//TODO: log code
 //TODO: comment code
 //TODO: catch all Exceptions
-//TODO: log code
+//TODO: synchronize threads
+//TODO: create an app scheme!!!
+//TODO: try to add 26 API supporting
+//TODO: delete this class
 public class App extends Application {
 }

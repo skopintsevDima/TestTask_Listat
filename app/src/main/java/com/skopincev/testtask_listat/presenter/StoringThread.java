@@ -11,5 +11,5 @@ public interface StoringThread {
     void connect();
     void disconnect();
     void pullData(Data data);
-    String displayData(Data data);
+    void stopPullingData();
 }

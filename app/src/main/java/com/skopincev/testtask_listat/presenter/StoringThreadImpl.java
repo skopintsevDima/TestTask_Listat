@@ -7,7 +7,6 @@ import com.skopincev.testtask_listat.model.Data;
 import com.skopincev.testtask_listat.view.CalculationView;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,15 +19,21 @@ public class StoringThreadImpl extends Thread implements StoringThread {
 
     private String mConnectionState = BundleConst.CONNECTION_CLOSED;
     private List<Data> mDataBank = new ArrayList<>();
-    private CalculationView mView;
+    private CalculationPresenter mPresenter;
 
-    public StoringThreadImpl(CalculationView view){
-        mView = view;
+    public StoringThreadImpl(CalculationPresenter presenter){
+        mPresenter = presenter;
     }
 
     private void displayStoredData() {
-        for (Data data: mDataBank){
-            displayData(data);
+        if (mDataBank.size() > 0) {
+            Log.d(TAG, "displayStoredData: Start displaying");
+            for (Data data : mDataBank) {
+                mPresenter.displayData(data);
+                Log.d(TAG, "displayStoredData: Data displayed from thread " + data.getCalculationThreadId());
+            }
+        } else {
+            Log.d(TAG, "displayStoredData: Store is empty");
         }
     }
 
@@ -37,9 +42,10 @@ public class StoringThreadImpl extends Thread implements StoringThread {
         if (mConnectionState.equals(BundleConst.CONNECTION_ESTABLISHED) ||
                 mConnectionState.equals(BundleConst.CONNECTION_CLOSED)){
             mConnectionState = BundleConst.CONNECTION_OPENED;
+            Log.d(TAG, "connect: View connected");
             displayStoredData();
         } else {
-            Log.d(TAG, "View: NO CONNECTION");
+            Log.d(TAG, "connect: View not found");
         }
     }
 
@@ -47,26 +53,27 @@ public class StoringThreadImpl extends Thread implements StoringThread {
     public void disconnect() {
         if (mConnectionState.equals(BundleConst.CONNECTION_OPENED)){
             mConnectionState = BundleConst.CONNECTION_CLOSED;
+            Log.d(TAG, "disconnect: View disconnected");
         } else {
-            Log.d(TAG, "View: DISCONNECTED");
+            Log.d(TAG, "disconnect: No connection");
         }
     }
 
     @Override
     public void pullData(Data data) {
-        String isDisplayed = displayData(data);
-        if (isDisplayed.equals(BundleConst.RESULT_FAIL)){
+        if (mConnectionState.equals(BundleConst.CONNECTION_OPENED)) {
+            mPresenter.displayData(data);
+            Log.d(TAG, "pullData: Data displayed from thread " + data.getCalculationThreadId());
+        } else {
             mDataBank.add(data);
+            Log.d(TAG, "pullData: Data stored from thread " + data.getCalculationThreadId());
         }
     }
 
     @Override
-    public String displayData(Data data) {
-        String isDisplayed = BundleConst.RESULT_FAIL;
-        if (mConnectionState.equals(BundleConst.CONNECTION_OPENED)){
-            mView.displayData(data);
-            isDisplayed = BundleConst.RESULT_SUCCESS;
+    public void stopPullingData() {
+        if (isAlive()){
+            stop();
         }
-        return isDisplayed;
     }
 }

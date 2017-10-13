@@ -12,5 +12,6 @@ public interface BusThread {
     void run();
     String pullNumber(int number, int threadId);
     String sendData(Data data);
+    void stopPullingNumbers();
 }
 

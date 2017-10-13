@@ -6,5 +6,6 @@ package com.skopincev.testtask_listat.model;
 
 public interface CalculationThread {
     void startCalculating();
+    void stopCalculating();
     String sendNumber(int number);
 }

@@ -55,6 +55,14 @@ public class BusThreadImpl extends Thread implements BusThread {
     }
 
     @Override
+    public void stopPullingNumbers() {
+        if (isAlive()){
+            stop();
+            mStoringThread.stopPullingData();
+        }
+    }
+
+    @Override
     public void run() {
         super.run();
         mBusState = BundleConst.STATE_OPENED;
