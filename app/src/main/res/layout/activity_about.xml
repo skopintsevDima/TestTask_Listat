@@ -1,9 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.skopincev.testtask_listat.ui.activity.AboutActivity">
+    tools:context=".ui.activity.AboutActivity"
+    android:background="@color/color_white"
+    android:backgroundTint="@color/color_white">
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_scheme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/architecture"
+            android:contentDescription="@string/iv_scheme_description"/>
+
+        <TextView
+            android:id="@+id/tv_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about"
+            android:textSize="24sp"
+            android:textColor="@color/color_black"
+            android:textAlignment="viewStart"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_below="@+id/iv_scheme"/>
+
+        <TextView
+            android:id="@+id/tv_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_author"
+            android:textSize="24sp"
+            android:textColor="@color/color_black"
+            android:textAlignment="gravity"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="@dimen/margin_big"
+            android:layout_below="@+id/tv_about"/>
+
+        <TextView
+            android:id="@+id/tv_author_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_email"
+            android:autoLink="email"
+            android:textSize="24sp"
+            android:textAlignment="viewStart"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_below="@+id/tv_author"
+            android:paddingBottom="16dp"/>
+
+    </RelativeLayout>
+
+</ScrollView>

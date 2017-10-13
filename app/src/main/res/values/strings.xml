@@ -5,4 +5,15 @@
     <string name="item_massage">prime number generated:</string>
     <string name="btn_start_text">Start</string>
     <string name="btn_about_text">About</string>
+    <string name="about"> Storing thread connects with View(activity) and connection\n
+        is opened when activity resumed\n
+        is closed when activity paused\n
+        is established when activity is alive.\n
+        \n
+        Used architecture pattern: MVP.\n
+        Design: RecyclerView.
+    </string>
+    <string name="about_author">Author: Dmitriy Skopintsev</string>
+    <string name="about_email">skopintsev2015@gmail.com</string>
+    <string name="iv_scheme_description">Architecture scheme</string>
 </resources>
