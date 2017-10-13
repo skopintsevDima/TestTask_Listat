@@ -7,7 +7,6 @@ import android.app.Application;
  */
 
 //TODO: catch all Exceptions
-//TODO: synchronize threads
 //TODO: create an app scheme!!!
 //TODO: try to add 26 API supporting
 //TODO: delete this class

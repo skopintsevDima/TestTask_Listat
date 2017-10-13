@@ -24,7 +24,7 @@ public class BusThreadImpl extends Thread implements BusThread {
     }
 
     @Override
-    public String pullNumber(int number, int threadId) {
+    public synchronized String pullNumber(int number, int threadId) {
         if (mBusState == BundleConst.STATE_OPENED){
             mBusState = BundleConst.STATE_CLOSED;
 
